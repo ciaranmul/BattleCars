@@ -27,7 +27,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1232654686852920
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,7 +109,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1936241717806526
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,9 +309,9 @@ MonoBehaviour:
   - {fileID: 1315982341124748}
   - {fileID: 1936241717806526}
   - {fileID: 1232654686852920}
-  forwardAcceleration: 8000
-  reverseAcceleration: 4000
-  turnStrength: 1000
+  forwardAcceleration: 5000
+  reverseAcceleration: 2000
+  turnStrength: 2500
   dustTrails:
   - {fileID: 198085021239719428, guid: cad664674a11b424d83e8a2eef46d985, type: 2}
   - {fileID: 198085021239719428, guid: cad664674a11b424d83e8a2eef46d985, type: 2}
