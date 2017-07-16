@@ -6,6 +6,7 @@ public class CarController : MonoBehaviour {
 
     Rigidbody body;
     float deadZone = 0.1f;
+    public int player = 1;
     public float groundedDrag = 3f;
     public float maxVelocity = 50;
     public float hoverForce = 1000;
@@ -22,6 +23,13 @@ public class CarController : MonoBehaviour {
 
     public ParticleSystem[] dustTrails = new ParticleSystem[2];
 
+    string accelerate;
+    string horizontal;
+    string vertical;
+    string fire1;
+    string fire2;
+    string fire3;
+
     int layerMask;
     // Use this for initialization
     void Start () {
@@ -30,13 +38,15 @@ public class CarController : MonoBehaviour {
 
         layerMask = 1 << LayerMask.NameToLayer("Vehicle");
         layerMask = ~layerMask;
+
+        generateInputStrings(player);
 	}
 	
 	// Update is called once per frame
 	void Update () {
         // Main Thrust
         thrust = 0.0f;
-        float acceleration = Input.GetAxis("Accelerate");
+        float acceleration = Input.GetAxis(accelerate);
         if (acceleration > deadZone)
             thrust = acceleration * forwardAcceleration;
         else if (acceleration < -deadZone)
@@ -44,7 +54,7 @@ public class CarController : MonoBehaviour {
 
         // Turning
         turnValue = 0.0f;
-        float turnAxis = Input.GetAxis("Horizontal");
+        float turnAxis = Input.GetAxis(horizontal);
         if (Mathf.Abs(turnAxis) > deadZone)
             turnValue = turnAxis;
 	}
@@ -114,5 +124,18 @@ public class CarController : MonoBehaviour {
         {
             body.velocity = body.velocity.normalized * maxVelocity;
         }
+    }
+
+    void generateInputStrings(int player)
+    {
+        accelerate = string.Format("P{0}_Accelerate", player);
+        horizontal = string.Format("P{0}_Horizontal", player);
+        vertical = string.Format("P{0}_Vertical", player);
+        fire1 = string.Format("P{0}_Fire1", player);
+        fire2 = string.Format("P{0}_Fire2", player);
+        fire3 = string.Format("P{0}_Fire3", player);
+        
+        //Debug.Log("accelerate =" + accelerate);
+        //Debug.Log("horizontal =" + horizontal);
     }
 }
