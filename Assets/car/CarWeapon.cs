@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CarWeapon : MonoBehaviour {
 
-    float deadZone = 0.1f;
-
-    float rotationSpeed = 4f;
+    public float deadZone = 0.1f;
+    public float rotationSpeed = 4f;
+    public Gun gun;
 
     float turnValueHorizontal;
     float turnValueVertical;
@@ -28,13 +28,11 @@ public class CarWeapon : MonoBehaviour {
 
         if (Mathf.Abs(turnAxisHorizontal) > deadZone)
         {
-            Debug.Log("horizontal movement detected");
             turnValueHorizontal = turnAxisHorizontal;
         }
 
         if(Mathf.Abs(turnAxisVertical) > deadZone)
         {
-            Debug.Log("vertical movement detected");
             turnValueVertical = turnAxisVertical;
         }
 
@@ -42,14 +40,13 @@ public class CarWeapon : MonoBehaviour {
 		if (Input.GetButton(this.GetComponentInParent<CarGenerateInputStrings>().fire1))
         {
             // Fire projectile now
-            Debug.Log(string.Format("Player {0} fired", this.GetComponentInParent<CarGenerateInputStrings>().player));
+            gun.Shoot();
         }
 	}
 
     private void FixedUpdate()
     {
         float rotationAngle = Mathf.Atan2(turnValueHorizontal, -turnValueVertical) * Mathf.Rad2Deg;
-        Debug.Log(rotationAngle);
         if (Mathf.Abs(turnValueVertical) != 0 || Mathf.Abs(turnValueHorizontal) != 0)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0.0f, rotationAngle, 0.0f), rotationSpeed * Time.deltaTime);
