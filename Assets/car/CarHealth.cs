@@ -28,6 +28,7 @@ public class CarHealth : MonoBehaviour {
     //Method to deduct health from a player
     public void TakeDamage(int amount) {
         currentHealth -= amount;
+        Debug.Log(string.Format("Player {0} has {1} health remaining", GetComponent<CarGenerateInputStrings>().player, currentHealth));
 
         if (currentHealth <= 0)
         {

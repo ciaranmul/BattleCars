@@ -42,10 +42,10 @@ public class Gun : MonoBehaviour {
             {
                 shotDistance = hit.distance;
 
-                //if (hit.collider.GetComponent<Health>())
-                //{
-                //    hit.collider.GetComponent<Health>().TakeDamage(10);
-                //}
+                if (hit.collider.GetComponent<CarHealth>())
+                {
+                    hit.collider.GetComponent<CarHealth>().TakeDamage(10);
+                }
                 Debug.Log("Hit something");
             }
 
@@ -53,10 +53,11 @@ public class Gun : MonoBehaviour {
 
             if (tracer)
             {
-                StartCoroutine("RenderTracer", shotDistance * ray.direction);
+                Vector3[] parms = new Vector3[2] { ray.origin, ray.GetPoint(shotDistance) };
+                StartCoroutine("RenderTracer", parms);
             }
 
-            Debug.DrawRay(spawn.position, shotDistance * ray.direction, Color.red, 1);
+            Debug.DrawRay(ray.origin, shotDistance * ray.direction, Color.red, 1);
 
             GetComponent<AudioSource>().Play();
         }
@@ -74,11 +75,11 @@ public class Gun : MonoBehaviour {
         return canShoot;
     }
 
-    IEnumerator RenderTracer(Vector3 hitPoint)
+    IEnumerator RenderTracer(Vector3[] pos)
     {
         tracer.enabled = true;
-        tracer.SetPosition(0, spawn.position);
-        tracer.SetPosition(1, hitPoint);
+        tracer.SetPosition(0, pos[0]);
+        tracer.SetPosition(1, pos[1]);
         yield return null;
         tracer.enabled = false;
     }
