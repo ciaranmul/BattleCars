@@ -610,6 +610,8 @@ MonoBehaviour:
   carCollisionDamage: 10
   currentLives: 0
   currentHealth: 0
+  currentHealthbar: {fileID: 0}
+  ratioText: {fileID: 0}
 --- !u!120 &120057078617650334
 LineRenderer:
   m_ObjectHideFlags: 1

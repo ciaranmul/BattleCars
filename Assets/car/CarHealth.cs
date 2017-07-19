@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class CarHealth : MonoBehaviour {
@@ -8,14 +9,18 @@ public class CarHealth : MonoBehaviour {
     public int startingLives = 3;
     public int carCollisionDamage = 10;
     public int currentLives;
-    public int currentHealth;
+    public float currentHealth;
     float hitTimer;
 
     bool hasNoLives = false;
     bool isCurrentlyColliding = false;
 
-	// Use this for initialization
-	void Start () {
+    //Health UI elements
+    public Image currentHealthbar;
+    public Text ratioText;
+
+    // Use this for initialization
+    void Start () {
         currentHealth = startingHealth;
         currentLives = startingLives;
 	}
@@ -29,6 +34,8 @@ public class CarHealth : MonoBehaviour {
     public void TakeDamage(int amount) {
         currentHealth -= amount;
         Debug.Log(string.Format("Player {0} has {1} health remaining", GetComponent<CarGenerateInputStrings>().player, currentHealth));
+
+        UpdateHealthbar();
 
         if (currentHealth <= 0)
         {
@@ -62,6 +69,7 @@ public class CarHealth : MonoBehaviour {
             //one damage deduction per collision
             hitTimer = 0;
             isCurrentlyColliding = true;
+                       
         }
 
         //TODO: Complete collision with a projectile
@@ -95,6 +103,14 @@ public class CarHealth : MonoBehaviour {
             //TODO: player game over (no lives) 
             hasNoLives = true;
         }
+    }
+
+    //Updates the players healthbar to represent current health value 
+    public void UpdateHealthbar()
+    {
+        float ratio = currentHealth / startingHealth;
+        currentHealthbar.rectTransform.localScale = new Vector3(ratio, 1, 1);
+        ratioText.text = (ratio * 100).ToString() + '%';
     }
 
 }
