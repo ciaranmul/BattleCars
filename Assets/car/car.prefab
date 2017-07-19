@@ -124,9 +124,10 @@ GameObject:
   - component: {fileID: 54605800654475904}
   - component: {fileID: 114853594981247038}
   - component: {fileID: 114852891485367382}
+  - component: {fileID: 114888955693961682}
   m_Layer: 8
   m_Name: car
-  m_TagString: Untagged
+  m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -592,6 +593,22 @@ MonoBehaviour:
   dustTrails:
   - {fileID: 198085021239719428, guid: cad664674a11b424d83e8a2eef46d985, type: 2}
   - {fileID: 198085021239719428, guid: cad664674a11b424d83e8a2eef46d985, type: 2}
+--- !u!114 &114888955693961682
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1695390310367778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6514ccb0ae484ef4e9f8f9bef9330606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 100
+  startingLives: 3
+  carCollisionDamage: 10
+  currentLives: 0
+  currentHealth: 0
 --- !u!120 &120057078617650334
 LineRenderer:
   m_ObjectHideFlags: 1
