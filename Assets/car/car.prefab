@@ -422,7 +422,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65862145792473312
 BoxCollider:
@@ -533,6 +533,8 @@ MonoBehaviour:
     m_Bits: 256
   fireRate: 600
   spawn: {fileID: 4095921513842060}
+  hitParticle: {fileID: 1207715198365708, guid: 7a65f1bf04522cd41b5bfb537a890651,
+    type: 2}
 --- !u!114 &114769915936693254
 MonoBehaviour:
   m_ObjectHideFlags: 1

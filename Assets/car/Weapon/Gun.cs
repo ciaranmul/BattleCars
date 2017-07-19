@@ -11,6 +11,7 @@ public class Gun : MonoBehaviour {
 
     public Transform spawn;
     private LineRenderer tracer;
+    public GameObject hitParticle;
 
     private float secondsBetweenShots;
     private float nextPossibleShootTime;
@@ -38,28 +39,38 @@ public class Gun : MonoBehaviour {
             Ray ray = new Ray(spawn.position, spawn.forward);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, shotDistance, collisionMask))
-            {
-                shotDistance = hit.distance;
+            // Play Gunshot
+            GetComponent<AudioSource>().Play();
 
-                if (hit.collider.GetComponent<CarHealth>())
-                {
-                    hit.collider.GetComponent<CarHealth>().TakeDamage(10);
-                }
-                Debug.Log("Hit something");
-            }
-
+            // Set next time player can shoot
             nextPossibleShootTime = Time.time + secondsBetweenShots;
 
+            // Draw tracer
             if (tracer)
             {
                 Vector3[] parms = new Vector3[2] { ray.origin, ray.GetPoint(shotDistance) };
                 StartCoroutine("RenderTracer", parms);
             }
 
+            // Detect hit
+            if (Physics.Raycast(ray, out hit, shotDistance, collisionMask))
+            {
+                // Stop ray at hit position
+                shotDistance = hit.distance;
+
+                // Do damage to hit object where possible
+                if (hit.collider.GetComponent<CarHealth>())
+                {
+                    hit.collider.GetComponent<CarHealth>().TakeDamage(10);
+                }
+
+                // Instantiate particle system on hit
+                GameObject currentParticle = Instantiate(hitParticle, ray.GetPoint(shotDistance), Quaternion.identity);
+                Destroy(currentParticle, 1.0f);
+            }
+
             Debug.DrawRay(ray.origin, shotDistance * ray.direction, Color.red, 1);
 
-            GetComponent<AudioSource>().Play();
         }
 
     }
@@ -83,5 +94,6 @@ public class Gun : MonoBehaviour {
         yield return null;
         tracer.enabled = false;
     }
+
 }
 
