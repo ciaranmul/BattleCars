@@ -45,13 +45,6 @@ public class Gun : MonoBehaviour {
             // Set next time player can shoot
             nextPossibleShootTime = Time.time + secondsBetweenShots;
 
-            // Draw tracer
-            if (tracer)
-            {
-                Vector3[] parms = new Vector3[2] { ray.origin, ray.GetPoint(shotDistance) };
-                StartCoroutine("RenderTracer", parms);
-            }
-
             // Detect hit
             if (Physics.Raycast(ray, out hit, shotDistance, collisionMask))
             {
@@ -67,6 +60,13 @@ public class Gun : MonoBehaviour {
                 // Instantiate particle system on hit
                 GameObject currentParticle = Instantiate(hitParticle, ray.GetPoint(shotDistance), Quaternion.identity);
                 Destroy(currentParticle, 1.0f);
+            }
+
+            // Draw tracer
+            if (tracer)
+            {
+                Vector3[] parms = new Vector3[2] { ray.origin, ray.GetPoint(shotDistance) };
+                StartCoroutine("RenderTracer", parms);
             }
 
             Debug.DrawRay(ray.origin, shotDistance * ray.direction, Color.red, 1);
