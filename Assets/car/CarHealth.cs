@@ -19,6 +19,10 @@ public class CarHealth : MonoBehaviour {
     public Image currentHealthbar;
     public Text ratioText;
 
+    public Image[] containerImages;
+    public Sprite[] healthSprites;
+
+
     // Use this for initialization
     void Start () {
         currentHealth = startingHealth;
@@ -28,13 +32,14 @@ public class CarHealth : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         hitTimer += Time.deltaTime;
-	}
+        UpdateHeartContainers();
+
+    }
 
     //Method to deduct health from a player
     public void TakeDamage(int amount) {
         currentHealth -= amount;
-        Debug.Log(string.Format("Player {0} has {1} health remaining", GetComponent<CarGenerateInputStrings>().player, currentHealth));
-
+        //Debug.Log(string.Format("Player {0} has {1} health remaining", GetComponent<CarGenerateInputStrings>().player, currentHealth));
         UpdateHealthbar();
 
         if (currentHealth <= 0)
@@ -111,6 +116,24 @@ public class CarHealth : MonoBehaviour {
         float ratio = currentHealth / startingHealth;
         currentHealthbar.rectTransform.localScale = new Vector3(ratio, 1, 1);
         ratioText.text = (ratio * 100).ToString() + '%';
+    }
+
+    //Updates the players heart containers based on the number of lives left
+    public void UpdateHeartContainers() {
+
+        for (int i = 0; i < startingLives; i++)
+        {
+            if(currentLives-1 >= i)
+            {
+                containerImages[i].sprite = healthSprites[1];
+            }
+            else
+            {
+                containerImages[i].sprite = healthSprites[0];
+            }
+            Debug.Log("i is: " + i);
+        }
+
     }
 
 }
