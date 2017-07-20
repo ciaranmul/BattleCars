@@ -10,6 +10,8 @@ public class SetNumberOfPlayers : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        PlayerPrefs.SetInt("players", 2);
+
         playerChoice.onValueChanged.AddListener(delegate
         {
             DropDownChange(playerChoice);
