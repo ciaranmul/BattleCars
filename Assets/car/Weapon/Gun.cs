@@ -59,6 +59,7 @@ public class Gun : MonoBehaviour {
 
                 // Instantiate particle system on hit
                 GameObject currentParticle = Instantiate(hitParticle, ray.GetPoint(shotDistance), Quaternion.identity);
+                currentParticle.transform.LookAt(transform);
                 Destroy(currentParticle, 1.0f);
             }
 
