@@ -18,22 +18,22 @@ public class CarHealth : MonoBehaviour {
     //Health UI elements
     public Image currentHealthbar;
     public Text ratioText;
-
     public Image[] containerImages;
     public Sprite[] healthSprites;
 
-
+    //Player spawn location array
+    public GameObject[] spawnLocations;
+ 
     // Use this for initialization
     void Start () {
         currentHealth = startingHealth;
         currentLives = startingLives;
-	}
+        UpdateHeartContainers();
+    }
 	
 	// Update is called once per frame
 	void Update () {
         hitTimer += Time.deltaTime;
-        UpdateHeartContainers();
-
     }
 
     //Method to deduct health from a player
@@ -73,19 +73,8 @@ public class CarHealth : MonoBehaviour {
             //Resets hitTimer and isCurrentlyColliding to true to prevent more than 
             //one damage deduction per collision
             hitTimer = 0;
-            isCurrentlyColliding = true;
-                       
+            isCurrentlyColliding = true;          
         }
-
-        //TODO: Complete collision with a projectile
-        //On collision with a projectile it should take damage (May take damage value from projectile object variable)
-        //as an example it is hard coded in here.
-
-        /*elseif(other.collider.tag == "Projectile"){
-         * TakeDamage(30)
-         * Destroy(other.gameObject);
-         * }
-         */
     }
 
     //Triggers when the car collision ends
@@ -99,15 +88,19 @@ public class CarHealth : MonoBehaviour {
         if (currentLives > 0)
         {
             currentLives -= 1;
-            
-            // TODO: player respawns
-            currentHealth = startingHealth;
+
+            //Player respawns after death if there are any lives left
+            respawn();
+
         }
         else
         {
-            //TODO: player game over (no lives) 
-            hasNoLives = true;
+            //If player has no more call gameOver to destroy the player gameObject
+            gameOver();
         }
+
+        //Updates how many hearts are shown after a death
+        UpdateHeartContainers();
     }
 
     //Updates the players healthbar to represent current health value 
@@ -131,9 +124,28 @@ public class CarHealth : MonoBehaviour {
             {
                 containerImages[i].sprite = healthSprites[0];
             }
-            Debug.Log("i is: " + i);
         }
 
+    }
+
+    public void respawn()
+    {
+
+        //Sets the payers location to be the same as one
+        //of the gameObjects in the public array spawnLocations 
+        this.transform.position = spawnLocations[Random.Range(0,spawnLocations.Length)].transform.position;
+        
+        //reset health to maximum and resets health bar after respawn
+        currentHealth = startingHealth;
+        UpdateHealthbar();
+    }
+
+
+    
+    //TODO: Add more to gameover for a player (animation/particle effects)
+    public void gameOver() {
+
+        Destroy(gameObject);
     }
 
 }
