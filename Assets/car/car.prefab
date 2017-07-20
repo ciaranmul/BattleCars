@@ -424,7 +424,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!65 &65862145792473312
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -585,7 +585,7 @@ MonoBehaviour:
   maxVelocity: 50
   hoverForce: 1000
   gravityForce: 1000
-  hoverHeight: 1.5
+  hoverHeight: 1.25
   hoverPoints:
   - {fileID: 1264383114309884}
   - {fileID: 1315982341124748}
