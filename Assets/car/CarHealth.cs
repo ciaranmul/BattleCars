@@ -13,7 +13,6 @@ public class CarHealth : MonoBehaviour {
     float hitTimer;
     public GameObject scoreTracker;
 
-    bool hasNoLives = false;
     bool isCurrentlyColliding = false;
 
     //Health UI elements

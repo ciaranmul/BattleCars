@@ -9,6 +9,7 @@ public class Gun : MonoBehaviour {
     public LayerMask collisionMask;
     public float fireRate;
     public GameObject player;
+    public GameObject hitParticle;
 
     public Transform spawn;
     private LineRenderer tracer;
@@ -59,6 +60,11 @@ public class Gun : MonoBehaviour {
             }
 
             Debug.DrawRay(ray.origin, shotDistance * ray.direction, Color.red, 1);
+
+            // Instantiate particle system on hit
+            GameObject currentParticle = Instantiate(hitParticle, ray.GetPoint(shotDistance), Quaternion.identity);
+            currentParticle.transform.LookAt(transform);
+            Destroy(currentParticle, 1.0f);
 
             GetComponent<AudioSource>().Play();
         }
