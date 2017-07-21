@@ -5,7 +5,14 @@ using UnityEngine;
 public class AudioHandler : MonoBehaviour {
 
     bool canPlay;
+    [Range(0,1)]
+    public float waitTime = 0.2f;
     public AudioSource soundClip;
+
+    private void Start()
+    {
+        canPlay = true;
+    }
 
     public void PlayAudio(AudioClip clip)
     {
@@ -18,9 +25,14 @@ public class AudioHandler : MonoBehaviour {
 
     }
 
+    public bool CanPlayAudio()
+    {
+        return canPlay;
+    }
+
     IEnumerator Reset()
     {
-        yield return new WaitForSeconds(.2f);
+        yield return new WaitForSeconds(waitTime);
         canPlay = true;
     }
 
