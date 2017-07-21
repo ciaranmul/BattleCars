@@ -1719,6 +1719,11 @@ Prefab:
       propertyPath: spawnLocations.Array.data[3]
       value: 
       objectReference: {fileID: 1185631754}
+    - target: {fileID: 114852891485367382, guid: c4c9e753e146f4a419cb47c5ca171af5,
+        type: 2}
+      propertyPath: player
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c4c9e753e146f4a419cb47c5ca171af5, type: 2}
   m_IsPrefabParent: 0
