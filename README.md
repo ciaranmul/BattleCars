@@ -1,4 +1,4 @@
-# BattleCars
+# Supa Speedy Drifty Bang Bang Cars
 Battle cars game built with Unity. One week challenge.
 
 
