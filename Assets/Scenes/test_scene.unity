@@ -2395,11 +2395,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114602529393869872, guid: c4c9e753e146f4a419cb47c5ca171af5,
-        type: 2}
-      propertyPath: main_camera
-      value: 
-      objectReference: {fileID: 1680201244}
+    - target: {fileID: 1695390310367778, guid: c4c9e753e146f4a419cb47c5ca171af5, type: 2}
+      propertyPath: m_Name
+      value: player1
+      objectReference: {fileID: 0}
     - target: {fileID: 114888955693961682, guid: c4c9e753e146f4a419cb47c5ca171af5,
         type: 2}
       propertyPath: scoreTracker
@@ -2450,10 +2449,11 @@ Prefab:
       propertyPath: spawnLocations.Array.data[3]
       value: 
       objectReference: {fileID: 1185631754}
-    - target: {fileID: 1695390310367778, guid: c4c9e753e146f4a419cb47c5ca171af5, type: 2}
-      propertyPath: m_Name
-      value: player1
-      objectReference: {fileID: 0}
+    - target: {fileID: 114602529393869872, guid: c4c9e753e146f4a419cb47c5ca171af5,
+        type: 2}
+      propertyPath: main_camera
+      value: 
+      objectReference: {fileID: 1680201244}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c4c9e753e146f4a419cb47c5ca171af5, type: 2}
   m_IsPrefabParent: 0
