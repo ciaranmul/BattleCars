@@ -17,6 +17,9 @@ public class Gun : MonoBehaviour {
     private float secondsBetweenShots;
     private float nextPossibleShootTime;
 
+    public AudioHandler aHandler;
+    public AudioClip gunSound;
+
 	// Use this for initialization
 	void Start () {
         secondsBetweenShots = 60 / fireRate;
@@ -66,7 +69,8 @@ public class Gun : MonoBehaviour {
             currentParticle.transform.LookAt(transform);
             Destroy(currentParticle, 1.0f);
 
-            GetComponent<AudioSource>().Play();
+            aHandler.PlayAudio(gunSound);
+
         }
 
     }

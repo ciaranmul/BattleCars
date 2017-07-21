@@ -184,7 +184,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1697544308720760
 GameObject:
   m_ObjectHideFlags: 1
@@ -607,6 +607,8 @@ MonoBehaviour:
   hitParticle: {fileID: 1207715198365708, guid: 7a65f1bf04522cd41b5bfb537a890651,
     type: 2}
   spawn: {fileID: 4095921513842060}
+  aHandler: {fileID: 0}
+  gunSound: {fileID: 8300000, guid: e19e5b0e2a6c61c49a61fb55ee86a0b2, type: 3}
 --- !u!114 &114464740501999084
 MonoBehaviour:
   m_ObjectHideFlags: 1
