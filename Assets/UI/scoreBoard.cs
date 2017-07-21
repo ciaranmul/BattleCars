@@ -20,7 +20,7 @@ public class scoreBoard : MonoBehaviour {
     public void PopulateText(int[] scores) {
         for(int i = 0; i < scoreText.Length; i++)
         {
-            scoreText[i].text = string.Format("Player {0}: {1}", i+1, scores[i]);
+            scoreText[i].text = string.Format("Player {0}: {1}", i+1, scores[i] + " Kills");
         }
     }
     
