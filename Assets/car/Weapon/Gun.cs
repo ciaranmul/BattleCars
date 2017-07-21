@@ -8,6 +8,7 @@ public class Gun : MonoBehaviour {
     public float range = 1000;
     public LayerMask collisionMask;
     public float fireRate;
+    public GameObject player;
 
     public Transform spawn;
     private LineRenderer tracer;
@@ -44,7 +45,7 @@ public class Gun : MonoBehaviour {
 
                 if (hit.collider.GetComponent<CarHealth>())
                 {
-                    hit.collider.GetComponent<CarHealth>().TakeDamage(10);
+                    hit.collider.GetComponent<CarHealth>().TakeDamage(10, player.GetComponent<CarGenerateInputStrings>().player);
                 }
                 Debug.Log("Hit something");
             }

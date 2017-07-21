@@ -11,6 +11,7 @@ public class CarHealth : MonoBehaviour {
     public int currentLives;
     public float currentHealth;
     float hitTimer;
+    public GameObject scoreTracker;
 
     bool hasNoLives = false;
     bool isCurrentlyColliding = false;
@@ -37,14 +38,16 @@ public class CarHealth : MonoBehaviour {
     }
 
     //Method to deduct health from a player
-    public void TakeDamage(int amount) {
+    public void TakeDamage(int amount, int attacker) {
         currentHealth -= amount;
         //Debug.Log(string.Format("Player {0} has {1} health remaining", GetComponent<CarGenerateInputStrings>().player, currentHealth));
         UpdateHealthbar();
 
+        //Sets the last player who caused damage to this player object
+
         if (currentHealth <= 0)
         {
-            Death();
+            Death(attacker);
         }
     }
 
@@ -67,7 +70,7 @@ public class CarHealth : MonoBehaviour {
 
             //If this cars speed is less than the other it recieves damage
             if (speed < colliderSpeed) {
-                TakeDamage(carCollisionDamage);
+                TakeDamage(carCollisionDamage, other.gameObject.GetComponent<CarGenerateInputStrings>().player);
             }
 
             //Resets hitTimer and isCurrentlyColliding to true to prevent more than 
@@ -84,7 +87,10 @@ public class CarHealth : MonoBehaviour {
     
     //Respawns and deducts a player life if there are lives left 
     //if not do not repawn player
-    void Death() {
+    void Death(int killer) {
+
+        scoreTracker.GetComponent<scoreTracker>().incrementKillCount(killer);
+
         if (currentLives > 0)
         {
             currentLives -= 1;
@@ -101,6 +107,7 @@ public class CarHealth : MonoBehaviour {
 
         //Updates how many hearts are shown after a death
         UpdateHeartContainers();
+
     }
 
     //Updates the players healthbar to represent current health value 
@@ -145,7 +152,9 @@ public class CarHealth : MonoBehaviour {
     //TODO: Add more to gameover for a player (animation/particle effects)
     public void gameOver() {
 
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+        scoreTracker.GetComponent<scoreTracker>().CheckPlayersRemaining();
+
     }
 
 }
