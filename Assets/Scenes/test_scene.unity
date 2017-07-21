@@ -3557,6 +3557,10 @@ Prefab:
       propertyPath: main_camera
       value: 
       objectReference: {fileID: 1680201244}
+    - target: {fileID: 1695390310367778, guid: c4c9e753e146f4a419cb47c5ca171af5, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c4c9e753e146f4a419cb47c5ca171af5, type: 2}
   m_IsPrefabParent: 0
@@ -6952,7 +6956,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &193375406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6978,8 +6982,8 @@ MonoBehaviour:
   - {fileID: 25732190}
   - {fileID: 2010793735}
   healthSprites:
-  - {fileID: 21300000, guid: f559c03bc4db38b4bb0fdae9c1242012, type: 3}
-  - {fileID: 21300002, guid: f559c03bc4db38b4bb0fdae9c1242012, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   spawnLocations:
   - {fileID: 169559345}
   - {fileID: 372491752}
@@ -14259,7 +14263,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &526435997
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18499,7 +18503,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &955879580
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19761,7 +19765,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1488637528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19787,8 +19791,8 @@ MonoBehaviour:
   - {fileID: 1353588356}
   - {fileID: 1436431277}
   healthSprites:
-  - {fileID: 21300000, guid: f559c03bc4db38b4bb0fdae9c1242012, type: 3}
-  - {fileID: 21300002, guid: f559c03bc4db38b4bb0fdae9c1242012, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   spawnLocations:
   - {fileID: 169559345}
   - {fileID: 372491752}
@@ -20087,7 +20091,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1552428410
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20207,7 +20211,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1570752187
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20895,6 +20899,56 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 78530981af11a6447bac6ecff10878fc, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1760301090
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1760301092}
+  - component: {fileID: 1760301091}
+  m_Layer: 0
+  m_Name: Scene Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1760301091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1760301090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcce9b9836c6a1146838e397d079b951, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players:
+  - {fileID: 102798054}
+  - {fileID: 193375405}
+  - {fileID: 1488637527}
+  - {fileID: 2109258520}
+  uis:
+  - {fileID: 526435996}
+  - {fileID: 955879579}
+  - {fileID: 1552428409}
+  - {fileID: 1570752186}
+--- !u!4 &1760301092
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1760301090}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -91.97979, y: 1.7437104, z: 42.03965}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 24
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1763760781
 GameObject:
   m_ObjectHideFlags: 0
@@ -25171,7 +25225,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2109258521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25197,8 +25251,8 @@ MonoBehaviour:
   - {fileID: 647089528}
   - {fileID: 539618679}
   healthSprites:
-  - {fileID: 21300000, guid: f559c03bc4db38b4bb0fdae9c1242012, type: 3}
-  - {fileID: 21300002, guid: f559c03bc4db38b4bb0fdae9c1242012, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   spawnLocations:
   - {fileID: 169559345}
   - {fileID: 372491752}
